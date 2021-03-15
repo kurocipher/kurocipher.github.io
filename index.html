@@ -31,21 +31,31 @@
 				  <div class="p-2">
 				  	<button type="button" id="clearTextAreas" class="btn btn-danger"><i class="bi-trash"></i> Clear</button>
 				  </div>
-				</div>
+			</div>
  			 <div class="row" data-masonry='{"percentPosition": true }'>
 			   	<div class="col-sm-12 col-lg-6 mb-4">
 			      <div class="card">
 			        <div class="card-body">
          		 		<h5 class="card-title">English Text</h5>
-	             	<textarea class="form-control" id="englishText" rows="10"></textarea>
+	             		<textarea class="form-control" id="englishText" rows="10"></textarea>
+	             		<div class="d-flex flex-row-reverse">
+						  	<div class="p-2">
+							  	<button type="button" id="copyEnglishText" class="btn btn-info"><i class="bi-stickies"></i> Copy</button>
+							  </div>
+						</div>
 			        </div>
 			      </div>
 			    </div>
 			    <div class="col-sm-12 col-lg-6 mb-4">
 			      <div class="card">
 			        <div class="card-body">
-			          <h5 class="card-title">Encoded Text</h5>
-								<textarea class="form-control" id="encodedText" rows="10" ></textarea>
+			          	<h5 class="card-title">Encoded Text</h5>
+						<textarea class="form-control" id="encodedText" rows="10" ></textarea>
+						<div class="d-flex flex-row-reverse">
+						  	<div class="p-2">
+							  	<button type="button" id="copyEncodedText" class="btn btn-info"><i class="bi-stickies"></i> Copy</button>
+							  </div>
+						</div>
 			        </div>
 			      </div>
 			    </div>
@@ -80,6 +90,20 @@
 	    $("#clearTextAreas").click(function(e) {
 	    	$("#encodedText").val('');
 	    	$("#englishText").val('');
+	    })
+
+	    $("#copyEnglishText").click(function(e) {
+	    	var copyText = document.getElementById("englishText");
+		  	copyText.select();
+		  	copyText.setSelectionRange(0, 99999)
+		  	document.execCommand("copy");
+	    })
+
+	    $("#copyEncodedText").click(function(e) {
+	    	var copyText = document.getElementById("encodedText");
+		  	copyText.select();
+		  	copyText.setSelectionRange(0, 99999)
+		  	document.execCommand("copy");
 	    })
 
 	    let encodeCipher = (str) => {
